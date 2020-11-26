@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+    mongodb:
+        hostname: mongodb
+        image: mongo:4.4.1
+        networks:
+            - service-swarm
+        ports:
+            - 27017:27017
+        volumes: 
+            -   swarm-demo2_mongodb_data:/data/db
+        deploy:
+            replicas: 1
+            placement:
+                constraints: [node.role == manager]
+
+volumes: 
+    swarm-demo2_mongodb_data:
+        external: true
+secrets:
+    db_password:
+        external: true
+
+networks: 
+    service-swarm:
