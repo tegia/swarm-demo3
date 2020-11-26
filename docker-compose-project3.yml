@@ -7,7 +7,7 @@ services:
         networks:
             - service-swarm
         ports:
-            - 27017:27017
+            - 27018:27017
         volumes: 
             -   swarm-demo2_mongodb_data:/data/db
         deploy:
